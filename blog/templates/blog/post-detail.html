@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    This post Title
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/post-detail.css" %} ">
+{% endblock  %}
+
+{% block content %}
+    <section id="summary">
+        <h2>Post Title</h2>
+
+        <article>
+            <img src=" {% static 'blog/images/mountains.jpg' %} " alt="Post Title">
+            <address>By Moi</address>
+            <div>
+                Last updated on <time>January 23rd</time>
+            </div>
+        </article>
+    </section>
+
+    <main>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Ullam temporibus vitae distinctio corporis rerum unde quos
+             consequuntur praesentium quam magni, esse atque numquam cum!
+              Officia libero atque minima necessitatibus consequuntur!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Minus consectetur nostrum dolorum ipsa, non incidunt voluptatem
+             doloribus nisi itaque recusandae nam ex veritatis ad, mollitia
+              praesentium dolorem voluptates debitis! Atque?
+        </p>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+             Quod aliquam cupiditate sit, eius sequi tempore voluptates
+              laborum explicabo incidunt omnis vel iste repellendus suscipit
+               voluptate ipsum, perspiciatis soluta cumque. Repellendus.
+        </p>
+    </main>
+
+{% endblock  %}
