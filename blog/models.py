@@ -1,3 +1,7 @@
+from distutils.command.upload import upload
+from email.mime import image
+from pickle import TRUE
+from tkinter import CASCADE
 from django.db import models
 from django.core.validators import MinLengthValidator
 
@@ -23,11 +27,18 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=150)
     excerpt = models.CharField(max_length=200)
-    image_name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="posts", null=TRUE)
     date = models.DateField(auto_now=True, auto_now_add=False)
     slug = models.SlugField(unique=True, db_index=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
     author = models.ForeignKey(Author,null=True, on_delete=models.SET_NULL, related_name="posts")
     tags = models.ManyToManyField(Tag)
 
+    def __str__(self):
+        return f"{self.title}"
 
+class Comment(models.Model):
+    user_name = models.CharField(max_length=120)
+    user_email = models.EmailField()
+    text = models.TextField(max_length=400)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
